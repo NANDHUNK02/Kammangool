@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<title>கம்மங்கூழ் நன்மைகள்</title>
+
+<style>
+body{
+font-family: Arial, sans-serif;
+background: linear-gradient(120deg,#f6d365,#fda085);
+text-align:center;
+padding:40px;
+}
+
+.container{
+background:white;
+padding:30px;
+border-radius:15px;
+max-width:600px;
+margin:auto;
+box-shadow:0 0 15px rgba(0,0,0,0.2);
+}
+
+h1{
+color:#8b4513;
+}
+
+#dynamic{
+font-size:20px;
+margin-top:20px;
+color:#444;
+font-weight:bold;
+}
+
+button{
+padding:10px 20px;
+border:none;
+background:#8b4513;
+color:white;
+font-size:16px;
+border-radius:8px;
+cursor:pointer;
+margin-top:20px;
+}
+
+button:hover{
+background:#a0522d;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🥣 கம்மங்கூழ்</h1>
+
+<p>உடலுக்கு ஆரோக்கியம் தரும் பாரம்பரிய உணவு</p>
+
+<div id="dynamic"></div>
+
+<button onclick="speakTamil()">🔊 கேட்க</button>
+
+</div>
+
+<script>
+
+let tips = [
+"கம்மங்கூழ் உடலை குளிர்விக்க உதவுகிறது.",
+"இதில் அதிக நார்ச்சத்து இருப்பதால் ஜீரணத்திற்கு நல்லது.",
+"சர்க்கரை நோயாளிகளுக்கு இது பயனுள்ளதாக இருக்கும்.",
+"உடல் சக்தியை அதிகரிக்க உதவும்.",
+"கிராமப்புறங்களில் இது பாரம்பரிய காலை உணவாக பயன்படுத்தப்படுகிறது."
+];
+
+let index = 0;
+
+function changeText(){
+document.getElementById("dynamic").innerHTML = tips[index];
+index++;
+if(index >= tips.length){
+index = 0;
+}
+}
+
+setInterval(changeText,4000);
+
+changeText();
+
+function speakTamil(){
+let text = document.getElementById("dynamic").innerText;
+let speech = new SpeechSynthesisUtterance(text);
+speech.lang = "ta-IN";
+speechSynthesis.speak(speech);
+}
+
+</script>
+
+</body>
+</html>
